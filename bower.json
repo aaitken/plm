@@ -1,0 +1,17 @@
+{
+  "name": "docpad-tabula-rasa--react",
+  "version": "0.1",
+  "homepage": "",
+  "authors": [
+    "Alex Aitken"
+  ],
+  "description": "client-side dependencies for docpad scaffolding with react",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "jquery": "~2.1.3",
+    "normalize-scss": "~3.0.2",
+    "foundation": "~5.5.1",
+    "react": "~0.12.2"
+  }
+}
