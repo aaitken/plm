@@ -23,9 +23,10 @@ html ->
 
   body ->
 
+    div id:"map", class:"map"
     text @partial('title-bar.html.coffee')
-    div id:"alex-map"
-    text @content
+    h1 "Content"
+    div id:"example"
 
     #insert script using frontend plugin
     #this picks up incrementally-named document scripts as well
