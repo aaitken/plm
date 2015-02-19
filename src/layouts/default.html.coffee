@@ -4,6 +4,7 @@ styles: [
   '/assets/styles/app.css']
 scripts: [
   '/assets/globals/vendors.js'
+  'https://maps.googleapis.com/maps/api/js?key=AIzaSyBmuLInLT_gBvFNlal0h_d5p0Z-TjmdX-U'
   '/assets/modules/app.js']
 
 ---
@@ -23,6 +24,7 @@ html ->
   body ->
 
     text @partial('title-bar.html.coffee')
+    div id:"alex-map"
     text @content
 
     #insert script using frontend plugin

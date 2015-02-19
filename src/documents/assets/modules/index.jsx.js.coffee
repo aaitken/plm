@@ -1,9 +1,8 @@
-React = require('React')
-$ = require('jQuery')
+REACT = require('REACT')
 
 #========
 
-Test = React.createClass
+Test = REACT.createClass
   render: ->
     `(
     <div>
@@ -11,7 +10,4 @@ Test = React.createClass
     </div>
     )`
 
-React.render `
-  <Test />,
-  $('#example')[0]
-  `
+module.exports = Test

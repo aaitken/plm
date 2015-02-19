@@ -42,8 +42,7 @@ module.exports = function(grunt) {
             'bower_components/jquery/dist/jquery.js',
             'bower_components/fastclick/lib/fastclick.js',
             'bower_components/foundation/js/foundation/foundation.js',
-            'bower_components/react/react.js',
-            'src/files/assets/globals/*.js']
+            'bower_components/react/react.js']
         }
       }
     },

@@ -30,9 +30,10 @@
     ]
   },
   "browserify-shim": {
-    "jQuery": "global:jQuery",
-    "React": "global:React",
-    "Foundation": "global:Foundation"
+    "JQUERY": "global:jQuery",
+    "REACT": "global:React",
+    "FOUNDATION": "global:Foundation",
+    "GOOGLE": "global:google"
   },
   "main": "node_modules/docpad/bin/docpad-server",
   "scripts": {
