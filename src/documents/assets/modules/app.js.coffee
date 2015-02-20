@@ -1,16 +1,19 @@
 GOOGLE = require('GOOGLE')
 REACT = require('REACT')
-HelloWorld = require('./views/hello-world.js')
+Search = require('./views/search.js')
 mapOptions = require('./configs/map-options.js')
 
 #========
 
 #Render Top-Level Component
-parent = document.getElementById('example')
-REACT.render(HelloWorld(), parent)
+(->
+  parent = document.getElementById('plm-search-parent')
+  REACT.render(Search(), parent))()
+
 
 #Render Map
-maps = GOOGLE.maps
-parent = document.getElementById('map')
-maps.event.addDomListener(window, 'load', (->
-  new maps.Map(parent, mapOptions)))
+(->
+  maps = GOOGLE.maps
+  parent = document.getElementById('plm-map')
+  maps.event.addDomListener(window, 'load', (->
+    new maps.Map(parent, mapOptions))))()
