@@ -5,7 +5,7 @@ styles: [
 scripts: [
   '/assets/globals/vendors.js'
   'https://maps.googleapis.com/maps/api/js?key=AIzaSyBmuLInLT_gBvFNlal0h_d5p0Z-TjmdX-U'
-  '/assets/modules/app.js']
+  '/assets/modules/app.bundle.js']
 
 ---
 

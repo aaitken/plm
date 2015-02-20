@@ -31,7 +31,7 @@ docpadConfig = {
         #grunt
         #no uglification of scripts
         grunt:
-          writeAfter: ['concat', 'browserify']
+          writeAfter: ['concat']
 
     ###
       templateData:
@@ -50,7 +50,7 @@ docpadConfig = {
         #natural htmlmin (via docpad, apparently)
         grunt:
           writeAfter: false
-          generateAfter: ['concat', 'browserify', 'uglify', 'cssmin']
+          generateAfter: ['concat', 'uglify', 'cssmin']
 
       templateData:
 
