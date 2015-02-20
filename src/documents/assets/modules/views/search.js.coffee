@@ -6,7 +6,7 @@ REACT = require('REACT')
 Search = REACT.createClass
   render: ->
     form {},
-      div className:"large-5 columns",
+      div className:"large-4 columns",
         input type:"text", placeholder:"search"
 
 module.exports = REACT.createFactory(Search)
