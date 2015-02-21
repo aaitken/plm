@@ -1,10 +1,11 @@
 GOOGLE = require('GOOGLE')
 $ = require('JQUERY')
+Marker = require('./marker')
 mapOptions = require('../configs/map-options.js')
 
 #========
 
-class Map
+module.exports = class Map
 
   @singleton: ->
     @instance ?= new this()
@@ -13,26 +14,27 @@ class Map
   constructor: ->
     @event = GOOGLE.maps.event
     @parent = document.getElementById('plm-map')
-    @init()
+    @Marker = Marker
+    @_init()
 
 
-  init: ->
+  _init: ->
     @map = new GOOGLE.maps.Map(@parent, mapOptions)
-    @event.addListener @map, 'mousedown', =>
-      @add(event)
+    @event.addListener @map, 'mousedown', (event)=>
+      @_add(event)
     @event.addListener @map, 'dragstart', =>
-      @clearAddTimeout()
+      @_clearAddTimeout()
+    @event.addListener @map, 'mouseup', =>
+      @_clearAddTimeout()
 
 
-  add: (e)->
-    @addTimeout = setTimeout (->
-      console.log 'hey'), 650
-    $(e.target).one 'mouseup', =>
-      @clearAddTimeout()
+  _add: (e)->
+    makeMarker = =>
+      new @Marker {
+        latLng: e.latLng
+        map: @map}
+    @addTimeout = setTimeout(makeMarker, 650)
 
 
-  clearAddTimeout: ->
+  _clearAddTimeout: ->
     clearTimeout(@addTimeout)
-
-
-module.exports = Map
