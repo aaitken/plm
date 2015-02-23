@@ -14,4 +14,5 @@ module.exports = class Marker
   _init: ->
     @marker = new GOOGLE.maps.Marker {
       position: @latLng
+      draggable: true
       map: @map}
