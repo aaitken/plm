@@ -1,3 +1,7 @@
+---
+browserify: true
+---
+
 GOOGLE = require('GOOGLE')
 $ = require('JQUERY')
 Marker = require('./marker')
@@ -8,6 +12,7 @@ mapOptions = require('../configs/map-options.js')
 module.exports = class Map
 
   @singleton: ->
+    alert 'in'
     @instance ?= new this()
 
 

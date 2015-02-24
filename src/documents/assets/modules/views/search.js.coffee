@@ -1,3 +1,7 @@
+---
+browserify: true
+---
+
 REACT = require('REACT')
 
 #========

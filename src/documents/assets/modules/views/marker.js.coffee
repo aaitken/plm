@@ -1,3 +1,7 @@
+---
+browserify: true
+---
+
 GOOGLE = require('GOOGLE')
 Map = require('./map.js')
 

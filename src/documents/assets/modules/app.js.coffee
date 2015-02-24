@@ -1,3 +1,7 @@
+---
+browserify: true
+---
+
 GOOGLE = require('GOOGLE')
 REACT = require('REACT')
 Search = require('./views/search.js')
