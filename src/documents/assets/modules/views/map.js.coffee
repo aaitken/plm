@@ -12,7 +12,6 @@ mapOptions = require('../configs/map-options.js')
 module.exports = class Map
 
   @singleton: ->
-    alert 'in'
     @instance ?= new this()
 
 
@@ -25,6 +24,7 @@ module.exports = class Map
 
   _init: ->
     @map = new GOOGLE.maps.Map(@parent, mapOptions)
+    debugger
     @event.addListener @map, 'mousedown', (event)=>
       @_add(event)
     @event.addListener @map, 'dragstart', =>
