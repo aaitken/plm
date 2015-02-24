@@ -24,14 +24,14 @@ docpadConfig = {
 
   environments:
 
-    development: #------------------------DEV
+    #development: #------------------------DEV
 
-      plugins:
+      #plugins:
 
         #grunt
         #no uglification of scripts
-        grunt:
-          writeAfter: ['concat']
+        #grunt:
+          #writeAfter: ['concat']
 
     ###
       templateData:
@@ -50,7 +50,7 @@ docpadConfig = {
         #natural htmlmin (via docpad, apparently)
         grunt:
           writeAfter: false
-          generateAfter: ['concat', 'uglify', 'cssmin']
+          generateAfter: ['uglify', 'cssmin']
 
       templateData:
 
