@@ -36,7 +36,7 @@
   "main": "node_modules/docpad/bin/docpad-server",
   "scripts": {
     "start": "node_modules/docpad/bin/docpad-server",
-    "watch-css": "sass --watch src/documents/assets/styles:out/assets/styles",
+    "make-vendors": "grunt concat",
     "watch-js": "grunt browserify"
   }
 }
