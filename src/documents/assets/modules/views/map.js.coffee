@@ -8,6 +8,7 @@ mapOptions = require('../configs/map-options')
 
 module.exports = class Map extends Mixin
 
+  # access via 'Map.singleton()'
   @use(Singleton)
 
 
@@ -20,7 +21,7 @@ module.exports = class Map extends Mixin
 
   _add: (e)->
     makeMarker = =>
-      new @Marker {
+      @Marker.multiton {
         latLng: e.latLng
         map: @map}
     @addTimeout = setTimeout(makeMarker, 650)

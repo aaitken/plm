@@ -1,4 +1,4 @@
 module.exports = class Singleton
 
-  @singleton: ->
+  @singleton = ->
     @instance ?= new this()

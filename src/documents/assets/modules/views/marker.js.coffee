@@ -1,9 +1,15 @@
 GOOGLE = require('GOOGLE')
+Mixin = require('../mixins/mixin')
+Multiton = require('../mixins/multiton')
 Map = require('./map.js')
 
 #=========
 
-module.exports = class Marker
+module.exports = class Marker extends Mixin
+
+  # access via 'Marker.multiton'
+  @use(Multiton)
+
 
   constructor: (options)->
     @event = GOOGLE.maps.event
@@ -13,11 +19,11 @@ module.exports = class Marker
 
 
   _attachEvents: ->
-    @event.addListener @instance, 'mousedown', =>
+    @event.addListener @marker, 'mousedown', =>
       @_deleteMarker()
-    @event.addListener @instance, 'mouseup', =>
+    @event.addListener @marker, 'mouseup', =>
       @_clearDeleteTimeout()
-    @event.addListener @instance, 'dragstart', =>
+    @event.addListener @marker, 'dragstart', =>
       @_clearDeleteTimeout()
 
 
@@ -27,23 +33,18 @@ module.exports = class Marker
 
   _deleteMarker: ->
     killMarker = =>
-      @instance.setMap(null)
-      @instance = null #todo : update multiton
+      @_removeInstance(this)
+      @marker.setMap(null)
+      @marker = null
     @deleteTimeout = setTimeout(killMarker, 650)
 
 
   _init: ->
-    @instance = new GOOGLE.maps.Marker {
+    @marker = new GOOGLE.maps.Marker {
       position: @latLng
       draggable: true
       map: @map}
     @_attachEvents()
-    @_makeReference()
 
 
-  #multiton-ize
-  _makeReference: ->
-    if ! @constructor[0] then index = 0
-    else index = @constructor.length
-    @constructor[index] = @instance
-    console.log @constructor
+  # _removeInstance = Multiton method
