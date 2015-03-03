@@ -3,7 +3,7 @@ $ = require('JQUERY')
 Marker = require('./marker')
 mapOptions = require('../configs/map-options.js')
 
-#========
+#=========
 
 module.exports = class Map
 
@@ -18,16 +18,6 @@ module.exports = class Map
     @_init()
 
 
-  _init: ->
-    @map = new GOOGLE.maps.Map(@parent, mapOptions)
-    @event.addListener @map, 'mousedown', (event)=>
-      @_add(event)
-    @event.addListener @map, 'dragstart', =>
-      @_clearAddTimeout()
-    @event.addListener @map, 'mouseup', =>
-      @_clearAddTimeout()
-
-
   _add: (e)->
     makeMarker = =>
       new @Marker {
@@ -36,5 +26,19 @@ module.exports = class Map
     @addTimeout = setTimeout(makeMarker, 650)
 
 
+  _attachEvents: ->
+    @event.addListener @map, 'mousedown', (event)=>
+      @_add(event)
+    @event.addListener @map, 'dragstart', =>
+      @_clearAddTimeout()
+    @event.addListener @map, 'mouseup', =>
+      @_clearAddTimeout()
+
+
   _clearAddTimeout: ->
     clearTimeout(@addTimeout)
+
+
+  _init: ->
+    @map = new GOOGLE.maps.Map(@parent, mapOptions)
+    @_attachEvents()
