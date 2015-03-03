@@ -1,14 +1,14 @@
 GOOGLE = require('GOOGLE')
-$ = require('JQUERY')
+Mixin = require('../mixins/mixin')
+Singleton = require('../mixins/singleton')
 Marker = require('./marker')
-mapOptions = require('../configs/map-options.js')
+mapOptions = require('../configs/map-options')
 
 #=========
 
-module.exports = class Map
+module.exports = class Map extends Mixin
 
-  @singleton: ->
-    @instance ?= new this()
+  @use(Singleton)
 
 
   constructor: ->
