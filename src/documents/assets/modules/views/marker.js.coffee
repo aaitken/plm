@@ -1,11 +1,11 @@
 GOOGLE = require('GOOGLE')
 Mixin = require('../mixins/mixin')
 Multiton = require('../mixins/multiton')
-Map = require('./map.js')
+MarkerForm = require('./marker-form')
 
 #=========
 
-module.exports = class Marker extends Mixin
+module.exports = window.Marker = class Marker extends Mixin
 
   # access via 'Marker.multiton'
   @use(Multiton)
@@ -13,6 +13,7 @@ module.exports = class Marker extends Mixin
 
   constructor: (options)->
     @event = GOOGLE.maps.event
+    @MarkerForm = MarkerForm
     @latLng = options.latLng
     @map = options.map
     @_init()
@@ -25,7 +26,9 @@ module.exports = class Marker extends Mixin
       @_clearDeleteTimeout()
     @event.addListener @marker, 'dragstart', =>
       @_clearDeleteTimeout()
-
+    @event.addListener @marker, 'click', =>
+      @_openForm()
+      
 
   _clearDeleteTimeout: ->
     clearTimeout(@deleteTimeout)
@@ -33,9 +36,9 @@ module.exports = class Marker extends Mixin
 
   _deleteMarker: ->
     killMarker = =>
-      @_removeInstance(this)
-      @marker.setMap(null)
-      @marker = null
+      @_removeInstance(this) # splice the multiton array
+      @marker.setMap(null) # per google doc
+      @marker = null # per google doc
     @deleteTimeout = setTimeout(killMarker, 650)
 
 
@@ -46,5 +49,9 @@ module.exports = class Marker extends Mixin
       map: @map}
     @_attachEvents()
 
+
+  _openForm: ->
+    @markerForm = new @MarkerForm().markerForm
+    @markerForm.open(@map, @marker)
 
   # _removeInstance = Multiton method
