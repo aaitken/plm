@@ -1,11 +1,11 @@
 GOOGLE = require('GOOGLE')
 Mixin = require('../mixins/mixin')
 Multiton = require('../mixins/multiton')
-MarkerForm = require('./marker-form')
+MarkerWindow = require('./marker-window')
 
 #=========
 
-module.exports = window.Marker = class Marker extends Mixin
+module.exports = class Marker extends Mixin
 
   # access via 'Marker.multiton'
   @use(Multiton)
@@ -13,7 +13,7 @@ module.exports = window.Marker = class Marker extends Mixin
 
   constructor: (options)->
     @event = GOOGLE.maps.event
-    @MarkerForm = MarkerForm
+    @MarkerWindow = MarkerWindow
     @latLng = options.latLng
     @map = options.map
     @_init()
@@ -51,7 +51,8 @@ module.exports = window.Marker = class Marker extends Mixin
 
 
   _openForm: ->
-    @markerForm = new @MarkerForm().markerForm
-    @markerForm.open(@map, @marker)
+    @markerWindow ?= new @MarkerWindow().markerWindow
+    @markerWindow.open(@map, @marker)
+
 
   # _removeInstance = Multiton method
