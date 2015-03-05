@@ -7,7 +7,8 @@ MarkerWindow = require('./marker-window')
 
 module.exports = class Marker extends Mixin
 
-  # access via 'Marker.multiton'
+  # access via 'Marker.multiton()'
+  # instantiate via 'Marker.multiton({options})'
   @use(Multiton)
 
 

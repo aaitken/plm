@@ -8,7 +8,7 @@ config = require('../configs/map')
 
 module.exports = class Map extends Mixin
 
-  # access via 'Map.singleton()'
+  # access/instantiate via 'Map.singleton()'
   @use(Singleton)
 
 
